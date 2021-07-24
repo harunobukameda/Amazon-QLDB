@@ -1,0 +1,81 @@
+1.
+SELECT * FROM Vehicle
+
+2.
+SELECT * FROM VehicleRegistration
+
+3.
+SELECT * FROM Person
+
+4.
+SELECT * FROM DriversLicense
+
+5.
+SELECT * FROM Vehicle AS v WHERE v.VIN = '1N4AL11D75C109151'
+
+6.
+SELECT v.VIN, r.LicensePlateNumber, r.State, r.City, r.Owners FROM Vehicle AS v, VehicleRegistration AS r WHERE v.VIN = '1N4AL11D75C109151' AND v.VIN = r.VIN
+
+7.
+select * from DriversLicense where PersonId ='#####'
+
+8.
+SELECT * FROM Person where GovId = '####'
+
+9.
+SELECT * FROM Person,DriversLicense where Person.GovId = DriversLicense.LicenseNumber and 
+DriversLicense.LicenseNumber = '####'
+
+10.
+SELECT * FROM _ql_committed_Person AS p WHERE p.data.FirstName = 'Brent' AND p.data.LastName = 'Logan'
+
+11.
+SELECT metadata.id FROM _ql_committed_Person AS p WHERE p.data.FirstName = 'Brent' AND p.data.LastName = 'Logan'
+
+12.
+UPDATE VehicleRegistration AS r
+SET r.Owners.PrimaryOwner.PersonId = '<<replace with your id>>', r.City = 'Everett'
+WHERE r.VIN = '1N4AL11D75C109151'
+
+13.
+SELECT r.Owners.PrimaryOwner, r.City FROM VehicleRegistration AS r WHERE r.VIN = '1N4AL11D75C109151'
+
+14.
+SELECT r.Owners.PrimaryOwner.PersonId, r.City FROM VehicleRegistration AS r WHERE r.VIN = '1N4AL11D75C109151'
+
+15.
+SELECT metadata.id FROM _ql_committed_Person AS p WHERE p.data.FirstName = 'Alexis' AND p.data.LastName = 'Pena'
+
+16.
+FROM VehicleRegistration AS r
+WHERE r.VIN = '1N4AL11D75C109151' INSERT INTO r.Owners.SecondaryOwners
+VALUE { 'PersonId' : '<<replace with your id>>' }
+
+17.
+SELECT r.Owners.SecondaryOwners FROM VehicleRegistration AS r WHERE r.VIN = '1N4AL11D75C109151'
+
+18.
+SELECT metadata.id FROM _ql_committed_VehicleRegistration AS r WHERE r.data.VIN = '1N4AL11D75C109151'
+
+19.
+SELECT * FROM history(VehicleRegistration) AS h
+WHERE h.metadata.id = '<<replace with your id>>'
+
+20.
+SELECT r.metadata.id, r.blockAddress FROM _ql_committed_VehicleRegistration AS r WHERE r.data.VIN = 'KM8SRDHF6EU074761'
+
+21.
+SELECT metadata.id FROM _ql_committed_VehicleRegistration AS r WHERE r.data.VIN = '1N4AL11D75C109151'
+
+22.
+delete from VehicleRegistration where VIN = '1N4AL11D75C109151'
+
+23.
+select * from VehicleRegistration
+
+24.
+SELECT * FROM history(VehicleRegistration) AS h
+WHERE h.metadata.id = '3GH3OdgGfk48E677eJ9TgW'
+
+
+
